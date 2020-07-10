@@ -4,9 +4,9 @@ const { VideoGrant } = AccessToken;
 
 const generateToken = config => {
   return new AccessToken(
-    config.twilio.accountSid,
-    config.twilio.apiKey,
-    config.twilio.apiSecret
+    'ACdb22c212d4b4a22231c3086bff964028',
+  'SKdc501c3c996efff24ccdc142ffae20c5',
+  '5B3Futpfv863wwMShP9X78UhO3Vk9xq4'
   );
 };
 
