@@ -3,8 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
-const https = require('https');
-const fs = require("fs");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +27,7 @@ app.get('/api/greeting', (req, res) => {
 app.get('/video/token', (req, res) => {
   const identity = req.query.identity;
   const room = req.query.room;
-  const toxken = videoToken(identity, room, config);
+  const token = videoToken(identity, room, config);
   sendTokenResponse(token, res);
 
 });
@@ -40,9 +38,6 @@ app.post('/video/token', (req, res) => {
   sendTokenResponse(token, res);
 });
 
-https.createServer({
-  key: fs.readFileSync('/etc/letsencrypt/live/telemedicina2.luisgonzalez.me/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/telemedicina2.luisgonzalez.me/fullchain.pem')
-}, app).listen(3000, () =>
-  console.log('Express server is running on localhost:3000')
+app.listen(3001, () =>
+  console.log('Express server is running on localhost:3001')
 );
