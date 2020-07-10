@@ -1,16 +1,9 @@
 const config = require('./config');
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
-
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
-const port =  80;
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,7 +38,6 @@ app.post('/video/token', (req, res) => {
   sendTokenResponse(token, res);
 });
 
-// app.listen(port, () =>
-//   console.log('Express server is running on localhost:3001')
-// );
-https.createServer(options, app).listen(5000);
+app.listen(5000, () =>
+  console.log('Express server is running on localhost:5000')
+);
