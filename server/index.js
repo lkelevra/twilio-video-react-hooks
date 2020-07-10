@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +39,6 @@ app.post('/video/token', (req, res) => {
   sendTokenResponse(token, res);
 });
 
-app.listen(3001, () =>
+app.listen(port, () =>
   console.log('Express server is running on localhost:3001')
 );
