@@ -24,6 +24,14 @@ const sendTokenResponse = (token, res) => {
   );
 };
 
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
+
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
@@ -43,6 +51,9 @@ app.post('/video/token', (req, res) => {
   const token = videoToken(identity, room, config);
   sendTokenResponse(token, res);
 });
+
+
+
 
 https.createServer(options, app).listen(3000);
 
