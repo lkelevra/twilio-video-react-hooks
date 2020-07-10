@@ -29,7 +29,7 @@ app.get('/api/greeting', (req, res) => {
 app.get('/video/token', (req, res) => {
   const identity = req.query.identity;
   const room = req.query.room;
-  const token = videoToken(identity, room, config);
+  const toxken = videoToken(identity, room, config);
   sendTokenResponse(token, res);
 
 });
