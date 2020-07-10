@@ -43,6 +43,6 @@ app.post('/video/token', (req, res) => {
 https.createServer({
   key: fs.readFileSync('/etc/letsencrypt/live/telemedicina2.luisgonzalez.me/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/telemedicina2.luisgonzalez.me/fullchain.pem')
-}, app).listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
+}, app).listen(3000, () =>
+  console.log('Express server is running on localhost:3000')
 );
