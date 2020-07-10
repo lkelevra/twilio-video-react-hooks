@@ -8,8 +8,8 @@ const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
 const port =  80;
 const options = {
-  key: fs.readFileSync('../key.pem'),
-  cert: fs.readFileSync('../cert.pem')
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
 };
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
