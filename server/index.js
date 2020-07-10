@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
-const port = process.env.PORT || 80;
+const port =  80;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
